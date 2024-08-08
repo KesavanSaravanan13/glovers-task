@@ -2,7 +2,9 @@ import axios from 'axios';
 import {FormValues} from '../../pages/login/LoginForm';
 
 const AxiosCall = axios.create({
-    baseURL:'https://dev.myorthopedicproblem.com/login'
+    baseURL:'https://dev-api.gloversscorebooks.com//v1/auth/adminlogin'
+    // baseURL:'https://dev-api.gloversscorebooks.com//v1/auth/adminlogin'
+
 });
 
 

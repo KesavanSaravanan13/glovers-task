@@ -4,12 +4,12 @@ import { Form, Formik } from "formik";
 import { Col, Row } from 'react-bootstrap';
 import FieldForm from '../../components/FieldForm';
 
-import {createProducts} from '../../utils/API/AxiosCall';
+import { createProducts } from '../../utils/API/AxiosCall';
 import { useNavigate } from 'react-router-dom';
 
-export type FormInput={
-    name : string;
-    placeholder:string;
+export type FormInput = {
+    name: string;
+    placeholder: string;
 }
 
 export type FormValues = {
@@ -24,25 +24,24 @@ const LoginForm = () => {
         email: '',
         password: '',
     }
-    const loginInput : FormInput[] = [
-        { name: 'email',placeholder:'Enter your mail id ' },
-        { name: 'password', placeholder:'Enter your password ' },
+    const loginInput: FormInput[] = [
+        { name: 'email', placeholder: 'Enter your mail id ' },
+        { name: 'password', placeholder: 'Enter your password ' },
     ]
+    // const loginCredential = () =>{
+    //     email:''
+    // }
 
-    const setToken =(values : FormValues)=>{
-        createProducts({
-            email:values.email,
-            password:values.password,
+    const setToken = async (values: FormValues) => {
+        const response = await createProducts({
+            email: values.email,
+            password: values.password,
         })
-        .then(response =>{
-            if (response.data.access_token) {
-                sessionStorage.setItem('token', response.data.access_token);
-                navigate('/');
-            }
-        })
-        .catch(error =>{
-            console.error('Login error: ', error.response ? error.response.data : error.message);
-        })
+        if (response.data.data.token_details.access_token) {
+            sessionStorage.setItem('token', response.data.data.token_details.access_token);
+            navigate('/');
+        }
+
     }
     return (
         <Formik
@@ -60,7 +59,7 @@ const LoginForm = () => {
                     <Row className='m-0 p-0'>
                         <Col className='m-0 p-0'><h5>Login</h5></Col>
                         <label className='m-0 p-0 pb-3'>Please enter the email and password</label>
-                        <FieldForm errors={errors} touched={touched} loginInput={loginInput}/>
+                        <FieldForm errors={errors} touched={touched} loginInput={loginInput} />
                         <Col className='m-0 p-0 pt-3' xs={12}>
                             <button type='submit' className='m-0 p-0 py-2 col-12'>Login</button>
                         </Col>

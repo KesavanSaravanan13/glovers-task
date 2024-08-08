@@ -7,7 +7,6 @@ import PrivateRouteOther, { PrivateRouteLogin } from './pages/private-route/Priv
 
 function App() {
   return (
-    // <Login/>
     <Router>
       <Routes>
         <Route element={<PrivateRouteLogin/>}>

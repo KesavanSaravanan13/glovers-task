@@ -2,8 +2,12 @@ import '../../css/Login.css';
 import Logo from '../../assests/Frame 25.svg';
 import { Col, Row } from "react-bootstrap";
 import LoginForm from './LoginForm';
+import { useEffect } from 'react';
 
 const Login = () => {
+    useEffect(()=>{
+        // sessionStorage.removeItem('token');
+    },[])
     return (
         <Row className="m-0 p-0 vh-100 login d-flex justify-content-center align-items-center">
             <Col className="m-0 p-3 px-4 px-md-5 col-10 col-sm-6 col-lg-5 col-xl-4 bg-white loginCol"  >
