@@ -4,16 +4,17 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Login from './pages/login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRouteOther, { PrivateRouteLogin } from './pages/private-route/PrivateRouteLogin';
+import List from './pages/side-list/List';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route element={<PrivateRouteLogin/>}>
-          <Route path='/' element={<Login/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Route>
         <Route element={<PrivateRouteOther/>}>
-          <Route path='/' element={<></>}/>
+          <Route path='/:list' element={<List/>}/>
         </Route>
       </Routes>
     </Router>

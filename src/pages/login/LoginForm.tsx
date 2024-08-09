@@ -2,10 +2,11 @@ import * as Yup from 'yup';
 import '../../css/Login.css';
 import { Form, Formik } from "formik";
 import { Col, Row } from 'react-bootstrap';
-import FieldForm from '../../components/FieldForm';
-
+import FieldForm from '../../components/forms-formiks/FieldForm';
 import { createProducts } from '../../utils/API/AxiosCall';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import LoginButton from '../../components/button/LoginButton';
 
 export type FormInput = {
     name: string;
@@ -19,28 +20,30 @@ export type FormValues = {
 
 const LoginForm = () => {
     const navigate = useNavigate();
-
+    const [clicked, setClicked] = useState<boolean>(false);
     const initialValues = {
         email: '',
         password: '',
     }
     const loginInput: FormInput[] = [
-        { name: 'email', placeholder: 'Enter your mail id ' },
-        { name: 'password', placeholder: 'Enter your password ' },
+        { name: 'email', placeholder: 'Email ' },
+        { name: 'password', placeholder: 'Password ' },
     ]
-    // const loginCredential = () =>{
-    //     email:''
-    // }
-
     const setToken = async (values: FormValues) => {
+        setClicked(!clicked);
         const response = await createProducts({
             email: values.email,
             password: values.password,
         })
-        if (response.data.data.token_details.access_token) {
-            sessionStorage.setItem('token', response.data.data.token_details.access_token);
-            navigate('/');
-        }
+        setTimeout(() => {
+            if (response.data.data.token_details.access_token) {
+                sessionStorage.setItem('token', response.data.data.token_details.access_token);
+                navigate('/userslist');
+                setTimeout(() => {
+                    setClicked(!clicked);
+                }, 2000);
+            }
+        }, 2000)
 
     }
     return (
@@ -57,12 +60,10 @@ const LoginForm = () => {
             {({ errors, touched }) => (
                 <Form className='m-0 p-0'>
                     <Row className='m-0 p-0'>
-                        <Col className='m-0 p-0'><h5>Login</h5></Col>
-                        <label className='m-0 p-0 pb-3'>Please enter the email and password</label>
+                        <Col className='m-0 p-0 mb-1'><h3 className='m-0 fw-none'>Login</h3></Col>
+                        <label className='m-0 p-0 pb-3 mb-2'>Please enter the email and password</label>
                         <FieldForm errors={errors} touched={touched} loginInput={loginInput} />
-                        <Col className='m-0 p-0 pt-3' xs={12}>
-                            <button type='submit' className='m-0 p-0 py-2 col-12'>Login</button>
-                        </Col>
+                        {clicked ? <LoginButton message={'clicked'} /> : <LoginButton message={'normal'} />}
                         <Col className='m-0 p-0'><a href='/' >Forget Password?</a></Col>
                     </Row>
                 </Form>

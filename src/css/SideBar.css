@@ -1,0 +1,15 @@
+
+.sideBar{
+    border-right: 0.5px solid rgb(214, 214, 214);
+    width: 275px;
+}
+.sideList{
+    border-radius: 5px;
+}
+.sideList:hover{
+    background-image: linear-gradient(to bottom,#f0f7ff,#e6e7fa);
+}
+
+.activeSideBar{
+    background-image: linear-gradient(to bottom,#f0f7ff,#e6e7fa);
+}
