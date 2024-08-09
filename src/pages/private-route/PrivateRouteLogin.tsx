@@ -11,7 +11,7 @@ export const PrivateRouteLogin = () =>{
 const PrivateRouteOther = () =>{
     const isAuthenticated= sessionStorage.getItem('token');
     return(
-        isAuthenticated ? <Outlet/> : <Navigate to={'/login'}/>
+        isAuthenticated ? <Outlet/> : <Navigate to={'/'}/>
     );
 }
 

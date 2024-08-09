@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import SideBar from "../../components/side-bar/SideBar";
 import { useParams } from "react-router-dom";
+import UserList from "../user-list/UserList";
 
 const List = () => {
 
@@ -8,7 +9,7 @@ const List = () => {
     let component;
     switch (list) {
         case 'userslist':
-            component = (<Col className="m-0 p-0 col-9 flex-fill">userslist</Col>)
+            component = (<UserList/>)
             break;
         case 'teamslist':
             component = (<Col className="m-0 p-0 col-9 flex-fill">teamslist</Col>)

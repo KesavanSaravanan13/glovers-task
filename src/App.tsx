@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route element={<PrivateRouteLogin/>}>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Login/>}/>
         </Route>
         <Route element={<PrivateRouteOther/>}>
           <Route path='/:list' element={<List/>}/>

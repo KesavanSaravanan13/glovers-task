@@ -1,0 +1,24 @@
+
+.dropdown button{
+    margin-right: 25px !important;
+    background-color: #f7f9fa;
+    border-radius: 10px;
+}
+
+.dropdown-menu{
+    width: 190px;
+}
+
+.box{
+    border: 0.2px solid rgb(214, 214, 214) !important;
+    border-radius: 5px;
+
+}
+.btnClc{
+    border: none;
+    outline: none;
+    background-color: white;
+}
+.activeBtn{
+    border-bottom: 3px solid #205cab;
+}
