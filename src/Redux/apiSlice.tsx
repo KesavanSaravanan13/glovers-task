@@ -7,7 +7,7 @@ const apiSlice = createApi({
         prepareHeaders: (headers) => {
             const token = sessionStorage.getItem('token');
             if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
+                headers.set('Authorization', `${token}`);
             }
             headers.set('Content-Type', 'application/json');
             return headers;

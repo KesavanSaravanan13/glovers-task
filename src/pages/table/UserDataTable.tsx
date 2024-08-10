@@ -47,8 +47,8 @@ const UserDataTable = () => {
                             </td>
                         </tr>
                     ) : (
-                        // data.length > 0 ? (
-                        data?.map((item: {}, index: number) => (
+                        data.length > 0 && (
+                        data?.map((item:any, index: number) => (
                             <tr className='m-0 p-0 w-100' key={index}>
                                 <td className='m-0 col-1'>1</td>
                                 {/* <Td type={'text'} className='col-4' id={item.id} value={item.title} />
@@ -57,10 +57,11 @@ const UserDataTable = () => {
                                 {/* <td className='m-0 text-center col-1'><Link to={`/patientlist/${item.id}`}><img src={view} alt='view' /></Link></td> */}
                             </tr>
                         ))
-                        // ) : (
-                        //     <tr className='m-0 p-0'>
-                        //         <td className='m-0 fw-semibold text-center' colSpan={5}>No records for the result, Search Again!!!</td>
-                        //     </tr>
+                        )
+                        //  : (
+                        // //     <tr className='m-0 p-0'>
+                        // //         <td className='m-0 fw-semibold text-center' colSpan={5}>No records for the result, Search Again!!!</td>
+                        // //     </tr>
                         // )
                     )
                 }

@@ -23,7 +23,10 @@ const UserList = () => {
                         <UserDataTable/>
                     </Row>
                     <Row className="m-0 p-0">
-
+                        <Col className='m-0 p-0'>
+                        </Col>
+                        <Col className='m-0 p-0'>
+                        </Col>
                     </Row>
                 </Col>
             </Row>

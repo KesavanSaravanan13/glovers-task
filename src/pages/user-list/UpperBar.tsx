@@ -10,8 +10,7 @@ const UpperBar = () => {
             <ListOfStaff />
             <SearchBar />
             <Col className='m-0 p-0 col-4 flex-column'>
-                    <UserStatus />
-                    
+                <UserStatus />
             </Col>
         </Row>
     );
