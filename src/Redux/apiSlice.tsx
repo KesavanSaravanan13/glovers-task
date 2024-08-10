@@ -1,38 +1,27 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiSlice = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://dev-api.gloversscorebooks.com//v1/user/admin/coach-list' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://dev-api.gloversscorebooks.com/v1/user/admin',
+        prepareHeaders: (headers) => {
+            const token = sessionStorage.getItem('token');
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+            headers.set('Content-Type', 'application/json');
+            return headers;
+        },
+    }),
     endpoints: (builder) => ({
         getData: builder.query({
-            query: () => '',
+            query: () => '/coach-list?search=',
         }),
-        getDataById: builder.query({
-            query: (id) => `/${id}`,
-        }),
-        createData: builder.mutation({
-            query: (data) => ({
-                url: '',
-                method: 'POST',
-                body: data,
-            })
-        }),
-        updateDatabyId: builder.mutation({
-            query: ({id, ...data}) => ({
-                url: `/${id}`,
-                method: 'PUT',
-                body: data,
-            })
-        }),
-        deleteDatabyId: builder.mutation({
-            query: (id) => ({
-                url: `/${id}`,
-                method: 'DELETE',
-            })
-        })
-    })
+    }),
 });
 
-export const { useCreateDataMutation, useDeleteDatabyIdMutation, useGetDataQuery, useGetDataByIdQuery, useUpdateDatabyIdMutation } = apiSlice;
+export const {
+    useGetDataQuery,
+} = apiSlice;
+
 export default apiSlice;
