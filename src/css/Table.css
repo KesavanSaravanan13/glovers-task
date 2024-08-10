@@ -1,0 +1,14 @@
+
+.userTable th{
+    background-color: #f7f9fa;
+}
+
+.iconBtn{
+    border: none;
+    outline: none;
+    background-color: #f7f9fa;
+}
+
+.bi{
+    font-weight: 800;
+}

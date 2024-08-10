@@ -22,8 +22,8 @@ const SideBar: React.FC<ListSideBar> = ({ message }) => {
                 {
                     SideBarList.map((values, index) => {
                         return (
-                            <Link to={values.path} className='text-decoration-none text-black m-0 p-0 col-12'>
-                                <Row className={`p-0 py-3 m-2 mt-0 d-flex align-items-center flex-fill ${values.path.slice(1) === message ? 'sideList activeSideBar' : 'sideList'}`} key={index}>
+                            <Link to={values.path} className='text-decoration-none text-black m-0 p-0 col-12'  key={index}>
+                                <Row className={`p-0 py-3 m-2 mt-0 d-flex align-items-center flex-fill ${values.path.slice(1) === message ? 'sideList activeSideBar' : 'sideList'}`}>
                                     <img src={values.image} width={'14px'} height={'18px'} alt={values.alt} className='m-0 p-0 ps-4 w-auto px-3' />
                                     <Col className='m-0 p-0 fs-5'>{values.title}</Col>
                                 </Row>

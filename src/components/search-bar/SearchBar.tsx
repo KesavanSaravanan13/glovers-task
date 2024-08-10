@@ -1,0 +1,26 @@
+import close from '../../assests/close.png';
+import search from '../../assests/search-interface-symbol.png';
+import { Col, Row } from "react-bootstrap";
+
+
+const SearchBar = () => {
+    return (
+        <form className='m-0 p-0 w-auto'>
+            <Row className='m-0 p-0 px-3 d-flex flex-nowrap justify-content-between align-items-center searchBar'>
+                <Col className='m-0 p-0'>
+                    <button className='col-1 m-0 p-0 pb-1'>
+                        <img src={search} className=" m-0 p-0" width="18px" height="15px" alt="" />
+                    </button>
+                    <input type="text" className='col-8 m-0 p-2 ps-3' placeholder='Search...' />
+                </Col>
+                <Col className='m-0 p-0 col-1 w-auto pe-2'>
+                    <button className='col-1 m-0 p-0 pb-1'>
+                        <img src={close} className=" m-0 p-0" width="12px" height="12px" alt="" />
+                    </button>
+                </Col>
+            </Row>
+        </form>
+    );
+}
+
+export default SearchBar;

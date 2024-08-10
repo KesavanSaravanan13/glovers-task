@@ -1,27 +1,18 @@
-import { useState } from "react";
+import '../../css/UserList.css';
 import { Col, Row } from "react-bootstrap";
-
+import SearchBar from "../../components/search-bar/SearchBar";
+import ListOfStaff from "../../components/button/ListOfStaff";
+import UserStatus from "../../components/drop-down/UserStatus";
 
 const UpperBar = () => {
-    const [isClicked, setIsClicked] = useState<boolean>(false);
-    const stafflist = [
-        { name: 'Coach' },
-        { name: 'Staff' },
-        { name: 'Players' },
-        { name: 'Fans' }
-    ]
-
     return (
-        <Row className="m-0 p-5">
-            {
-                stafflist.map((values,index) => {
-                    return (
-                        <Col className="m-0 p-0 px-3 col-1 w-auto" key={index}>
-                            <button className={`m-0 p-0 btnClc fs-5 ${isClicked ? `activeBtn${index}` : ''}`} onClick={() => { setIsClicked(!isClicked) }}>{values.name}</button>
-                        </Col>
-                    );
-                })
-            }
+        <Row className="m-0 p-4 d-flex justify-content-between">
+            <ListOfStaff />
+            <SearchBar />
+            <Col className='m-0 p-0 col-4 flex-column'>
+                    <UserStatus />
+                    
+            </Col>
         </Row>
     );
 }

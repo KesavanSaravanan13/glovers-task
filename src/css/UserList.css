@@ -1,24 +1,75 @@
-
-.dropdown button{
+.dropdown button {
     margin-right: 25px !important;
     background-color: #f7f9fa;
     border-radius: 10px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     width: 190px;
 }
 
-.box{
+.box {
     border: 0.2px solid rgb(214, 214, 214) !important;
     border-radius: 5px;
 
 }
-.btnClc{
+
+.btnClc {
     border: none;
     outline: none;
     background-color: white;
 }
-.activeBtn{
+
+.activeBtn {
     border-bottom: 3px solid #205cab;
+}
+
+.searchBar {
+    width: 350px;
+    background-color: #f7f9fa;
+    border: 0.2px solid rgb(214, 214, 214);
+    border-radius: 20px;
+}
+
+.searchBar input,.searchBar input:hover,.searchBar input:focus {
+    background-color: #f7f9fa;
+    border: none;
+    outline: none;
+}
+
+.searchBar button {
+    background-color: #f7f9fa;
+    border:none;
+    outline: none;
+}
+
+
+.usProfile{
+    background-color: #00b1cc;
+}
+
+.userStatusDrop .dropdown-toggle::after{
+    display: none;
+}
+
+.llb{
+    background-color: rgb(243, 241, 241);
+}
+
+.userStatusDrop .dropdown-toggle{
+    background-color: #00bbd4;
+    border: none;
+    outline: none;
+}
+
+button.dropdown-toggle{
+    margin: 0;
+}
+
+.exReport , .exReport:hover{
+    border: none;
+    outline: none;
+    background-color: #2294f2;
+    width: 150px;
+    border-radius: 10px;
 }
