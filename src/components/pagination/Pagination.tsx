@@ -31,9 +31,12 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }: PageType) => {
 
     return (
         <BootstrapPagination className='m-0 p-0 d-flex justify-content-end align-items-center'>
-            <BootstrapPagination.Prev className='m-0 p-0 prev' onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1} >Previous</BootstrapPagination.Prev>
+            <BootstrapPagination.Prev className='m-0 p-0 prev' onClick={() =>
+                setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+            >Previous</BootstrapPagination.Prev>
             {pageNumbers.map(number => (
-                <BootstrapPagination.Item className={`m-0 p-0 ${number === currentPage&&'active'}`}
+                <BootstrapPagination.Item className={`m-0 p-0 ${number === currentPage && 'active'}`}
                     key={number}
                     onClick={() => setCurrentPage(number)}
                 >

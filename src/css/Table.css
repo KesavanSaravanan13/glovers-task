@@ -29,6 +29,18 @@
 
 .loadColumnBelow{
     background-color: rgb(223, 223, 223) !important;
-    padding: 130px 30px !important;
+    padding: 130px 50px !important;
     border-radius: 5px !important;
+}
+
+.tableBtn{
+    background-color: #005eab !important;
+    border: 1px solid #005eab !important;
+    outline: none !important;
+    border-radius: 3px;
+    padding: 2.5px 12px !important;
+}
+
+td{
+    font-size: 14px !important;
 }

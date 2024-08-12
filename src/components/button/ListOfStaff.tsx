@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Col } from "react-bootstrap";
 
-const ListOfStaff = () => {  
+type UpperBarProps = {
+    setListStaff:(value:string)=>void;
+};
+
+const ListOfStaff = ({setListStaff}:UpperBarProps) => {  
     const [coach, setCoach] = useState(true);
     const [staff, setStaff] = useState(false);
     const [players, setPlayers] = useState(false);
@@ -45,7 +49,10 @@ const ListOfStaff = () => {
             {
                 stafflist.map((values, index) => {
                     return (
-                        <button key={index} className={`m-0 p-0 mx-3 btnClc fs-5 ${values.isClicked ? `activeBtn` : ''}`} onClick={() => { setIsClicked(values.name) }}>{values.name}</button>
+                        <button key={index} className={`m-0 p-0 mx-3 btnClc fs-5 ${values.isClicked ? `activeBtn` : ''}`} onClick={() => { 
+                            setIsClicked(values.name);
+                            setListStaff(values.name);
+                         }}>{values.name}</button>
                     );
                 })
             }

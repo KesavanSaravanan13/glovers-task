@@ -10,12 +10,13 @@ type UpperBarProps = {
     handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     setUserStatus:(value:string)=>void;
+    setListStaff:(value:string)=>void;
 };
 
-const UpperBar = ({setUserStatus,handleKeyDown,handleChange}:UpperBarProps) => {
+const UpperBar = ({setListStaff,setUserStatus,handleKeyDown,handleChange}:UpperBarProps) => {
     return (
         <Row className="m-0 p-4 d-flex justify-content-between">
-            <ListOfStaff />
+            <ListOfStaff setListStaff={setListStaff} />
             <SearchBar handleKeyDown={handleKeyDown} handleChange={handleChange} />
             <Col className='m-0 p-0 col-4 flex-column'>
                 <UserStatus setUserStatus={setUserStatus} />

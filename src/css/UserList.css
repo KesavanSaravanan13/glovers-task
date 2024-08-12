@@ -73,3 +73,13 @@ button.dropdown-toggle{
     width: 150px;
     border-radius: 10px;
 }
+
+.dropdown-item , .dropdown-item:focus {
+    background-color: white !important;
+    color: black !important;
+}
+
+.dropdown-item :hover{
+    background-color: #f2f0f0 !important;
+    color: black !important;
+}

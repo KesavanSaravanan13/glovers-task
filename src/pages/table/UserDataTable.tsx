@@ -15,6 +15,7 @@ interface UserDataType {
 }
 
 interface UserType {
+    listStaff: string;
     data: UserDataType[];
     currentPage: number;
     recordsPerPage: number;
@@ -23,8 +24,14 @@ interface UserType {
     setButtonValue: (value: string) => void;
 }
 
-const UserDataTable: React.FC<UserType> = ({ data, currentPage, recordsPerPage, loading, buttonvalue, setButtonValue }) => {
-    const tdValue = [
+type TdValueType = {
+    colValue:string;
+    label:string;
+    type:string;
+}
+
+const UserDataTable: React.FC<UserType> = ({ listStaff, data, currentPage, recordsPerPage, loading, buttonvalue, setButtonValue }) => {
+    const tdValueCoach:TdValueType[] = [
         { colValue: 'col-1', label: 'S.No', type: 'text', },
         { colValue: 'col-1', label: 'Unique Id', type: 'text', },
         { colValue: 'col-1 ', label: 'F Name', type: 'date', },
@@ -33,6 +40,22 @@ const UserDataTable: React.FC<UserType> = ({ data, currentPage, recordsPerPage, 
         { colValue: 'col-2 ', label: 'Subscription Status', type: 'text', },
         { colValue: 'col-2 ', label: 'Team Details', type: 'text', },
     ];
+    const tdValueStaff:TdValueType[] = [
+        { colValue: 'col-1', label: 'S.No', type: 'text', },
+        { colValue: 'col-1', label: 'Unique Id', type: 'text', },
+        { colValue: 'col-1 ', label: 'F Name', type: 'date', },
+        { colValue: 'col-1 ', label: 'L Name', type: 'text', },
+        { colValue: 'col-3', label: 'Email', type: 'text', },
+        { colValue: 'col-2 ', label: 'Team Details', type: 'text', },
+    ]
+    const [tdValue, setTdvalue] = useState<TdValueType[]>([]);
+    useEffect(() => {
+        if (listStaff === 'Staff') {
+            setTdvalue(tdValueStaff);
+        } else if(listStaff === 'Coach'){
+            setTdvalue(tdValueCoach);
+        }
+    }, [listStaff]);
 
     return (
         <Table className="m-0 p-0 userTable">
@@ -88,9 +111,11 @@ const UserDataTable: React.FC<UserType> = ({ data, currentPage, recordsPerPage, 
                                             <Td type={'email'} status={item.status} className='col-1' value={item.customeid} />
                                             <Td type={'text'} status={item.status} className='col-1' value={item.first_name} />
                                             <Td type={'date'} status={item.status} className='col-1' value={item.last_name} />
-                                            <Td type={'email'} status={item.status} className='col-2' value={item.email} />
-                                            <Td type={'text'} status={item.status} className='col-2' value={item.is_subscribe} />
-                                            <td className={`m-0 text-center col-2  ${item.status === true ? 'activeRow' : 'nonActiveRow'}`}></td>
+                                            <Td type={'email'} status={item.status} className='col-3' value={item.email} />
+                                            {listStaff==='Coach' && (<Td type={'text'} status={item.status} className='col-2' value={item.is_subscribe} />)}
+                                            <td className={`m-0 p-3 col-2 ${item.status === true ? 'activeRow' : 'nonActiveRow'}`}>
+                                                <button className='m-0 p-0  w-auto tableBtn text-white fs-5'>view</button>
+                                            </td>
                                         </tr>
                                     ))
                                 ) : (
