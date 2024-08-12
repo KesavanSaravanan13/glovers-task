@@ -3,14 +3,22 @@ import { Col, Row } from "react-bootstrap";
 import SearchBar from "../../components/search-bar/SearchBar";
 import ListOfStaff from "../../components/button/ListOfStaff";
 import UserStatus from "../../components/drop-down/UserStatus";
+import React from 'react';
 
-const UpperBar = () => {
+
+type UpperBarProps = {
+    handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setUserStatus:(value:string)=>void;
+};
+
+const UpperBar = ({setUserStatus,handleKeyDown,handleChange}:UpperBarProps) => {
     return (
         <Row className="m-0 p-4 d-flex justify-content-between">
             <ListOfStaff />
-            <SearchBar />
+            <SearchBar handleKeyDown={handleKeyDown} handleChange={handleChange} />
             <Col className='m-0 p-0 col-4 flex-column'>
-                <UserStatus />
+                <UserStatus setUserStatus={setUserStatus} />
             </Col>
         </Row>
     );

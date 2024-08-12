@@ -1,0 +1,14 @@
+
+
+ul li{
+    list-style: none !important;
+    text-decoration: none !important;
+    padding: 10px !important;
+}
+
+.active{
+    background-color: #005eab !important;
+}
+.prev{
+    background-color: white !important;
+}
