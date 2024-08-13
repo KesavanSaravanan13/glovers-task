@@ -7,11 +7,13 @@ interface LoginButtonTypes {
 }
 
 const LoginButton: React.FC<LoginButtonTypes> = ({ message }) => {
-    if (message === 'clicked') {
+    if (message==='clicked') {
         return (
             <Col className='m-0 p-0 pt-3' xs={12}>
-                <div className="spinner-border custom-spinner text-white" />
-                <button type='submit' className='m-0 col-12'>Loggin..</button>
+
+                <button type='submit' className='m-0 col-12 d-flex align-items-center justify-content-center'>
+                    <div className="spinner-border custom-spinner text-white m-0 p-0 me-2" />Loggin..
+                </button>
             </Col>
         );
     }

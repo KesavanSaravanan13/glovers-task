@@ -1,13 +1,15 @@
 import '../../css/UserList.css';
 import { useState } from "react";
 import { Col } from "react-bootstrap";
+import { DataItem } from '../main-column/ColumnTemplate';
 
 type UpperBarProps = {
     setListStaff: (value: string) => void;
     listStaff: string;
+    setDataFromStore:(value:DataItem[])=>void;
 };
 
-const ListOfStaff = ({ listStaff, setListStaff }: UpperBarProps) => {
+const ListOfStaff = ({setDataFromStore, listStaff, setListStaff }: UpperBarProps) => {
     const [coach, setCoach] = useState(true);
     const [staff, setStaff] = useState(false);
     const [players, setPlayers] = useState(false);
@@ -56,7 +58,7 @@ const ListOfStaff = ({ listStaff, setListStaff }: UpperBarProps) => {
         }
     }
     return (
-        <Col className="m-0 p-0 col-1 col-md-7 col-xl-1 w-auto" >
+        <Col className="m-0 p-0 col-12 col-md-7 col-xl-1 flex-fill" >
             {
                 listStaff === 'Teams' ? (
                     <button className={`m-0 p-0 mx-3 btnClc fs-5 activeBtn`} onClick={() => {

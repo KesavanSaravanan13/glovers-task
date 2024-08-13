@@ -1,6 +1,7 @@
 .dropdown button {
-    margin-right: 25px !important;
+    /* margin-right: 25px !important; */
     background-color: #f7f9fa;
+    border: none;
     border-radius: 10px;
 }
 

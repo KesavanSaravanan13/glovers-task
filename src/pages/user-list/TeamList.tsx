@@ -48,6 +48,7 @@ const TeamList = () => {
     return (
         <ColumnTemplate
             listStaff={listStaff}
+            setDataFromStore={setDataFromStore}
             dataFromStore={dataFromStore}
             loading={loading}
             setLoading={setLoading}

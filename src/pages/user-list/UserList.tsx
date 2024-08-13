@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import ColumnTemplate from '../../components/main-column/ColumnTemplate';
 import { useGetDataQuery } from '../../Redux/apiSlice';
 import { getBaseUrl } from '../../utils/functions/apiBase';
+import { validUser } from '../../components/sweet-fires/SweetFires';
 
-type DataItem = {
+export type DataItem = {
     first_name: string;
     last_name: string;
     email: string;
@@ -21,19 +22,18 @@ type DataItem = {
 const UserList = () => {
     const [listStaff, setListStaff] = useState<string>('Coach');
     const [dataFromStore, setDataFromStore] = useState<DataItem[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
     const baseUrl = getBaseUrl(listStaff);
     const { data, isLoading, refetch } = useGetDataQuery(baseUrl);
-
+    const [loading, setLoading] = useState<boolean>(isLoading);
+    console.log(isLoading);
     useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            if (data) {
-                setDataFromStore(data.data || []);
-            }
+        console.log(loading);
+        setDataFromStore([]);
+        if (data) {
+            setDataFromStore(data.data || []);
+        }
         setLoading(isLoading);
-        }, 2300);
-    }, [data, isLoading, listStaff]);
+    }, [data, isLoading]);
 
     useEffect(() => {
         if (refetch) {
@@ -43,12 +43,13 @@ const UserList = () => {
                 setLoading(isLoading);
             }, 1000);
         }
-    }, [refetch]);
+    }, [refetch, listStaff]);
 
     return (
         <ColumnTemplate
             listStaff={listStaff}
             dataFromStore={dataFromStore}
+            setDataFromStore={setDataFromStore}
             loading={loading}
             setLoading={setLoading}
             setListStaff={setListStaff}

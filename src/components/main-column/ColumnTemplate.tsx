@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import Pagination from '../pagination/Pagination';
 
 
-type DataItem = {
+export type DataItem = {
     first_name: string;
     last_name: string;
     email: string;
@@ -29,10 +29,11 @@ type ColumnTempType = {
     loading: boolean;
     setLoading: (value: boolean) => void;
     setListStaff: (value: string) => void;
+    setDataFromStore:(value:DataItem[])=>void;
 }
 
 
-const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setListStaff }: ColumnTempType) => {
+const ColumnTemplate = ({ listStaff, dataFromStore,setDataFromStore, loading, setLoading, setListStaff }: ColumnTempType) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [recordsPerPage, setRecordsPerPage] = useState<number>(10);
 
@@ -137,7 +138,7 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
             console.error('dataAfterSort is not an array:', dataAfterSort);
         }
     }, [dataAfterSort]);
-
+    
     const indexOfLastRecord: number = currentPage * recordsPerPage;
     const indexOfFirstRecord: number = indexOfLastRecord - recordsPerPage;
     const currentRecords: DataItem[] = Array.isArray(data) ? data.slice(indexOfFirstRecord, indexOfLastRecord) : [];
@@ -152,7 +153,7 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
             </Row>
             <Row className="m-0 p-0 pe-4">
                 <Col className="m-0 p-0 ms-3 box">
-                    <UpperBar listStaff={listStaff} setListStaff={setListStaff} setUserStatus={setUserStatus} handleKeyDown={handleKeyDown} handleChange={handleChange} />
+                    <UpperBar listStaff={listStaff} setDataFromStore={setDataFromStore} setListStaff={setListStaff} setUserStatus={setUserStatus} handleKeyDown={handleKeyDown} handleChange={handleChange} />
                     <Row className="m-0 p-0 mx-2 px-2">
                         <hr className="m-0 p-0 px-2" />
                     </Row>
@@ -180,7 +181,7 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
                                 </Col>
                             </Row>
                         </Col>
-                        <Col className='m-0 p-0'>
+                        <Col className='m-0 p-0 mt-3 mt-md-0'>
                             <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                         </Col>
                     </Row>

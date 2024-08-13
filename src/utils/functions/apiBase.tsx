@@ -1,16 +1,24 @@
 export const getBaseUrl = (message: string): string => {
+    let url='';
     switch (message) {
         case 'Staff':
-            return 'https://dev-api.gloversscorebooks.com/v1/user/admin/staffs-list';
+            url= '/staffs-list';
+            break;
         case 'Players':
-            return 'https://dev-api.gloversscorebooks.com/v1/user/admin/players-list';
+            url= '/players-list';
+            break;
         case 'Fans':
-            return 'https://dev-api.gloversscorebooks.com/v1/user/admin/fans-list';
+            url= '/fans-list';
+            break;
         case 'Teams':
-            return 'https://dev-api.gloversscorebooks.com///v1/user/admin/teams-list';
+            url= '/teams-list';
+            break;
         case 'Coach':
-            return 'https://dev-api.gloversscorebooks.com/v1/user/admin/coach-list';
+            url= '/coach-list';
+            break;
         default:
-            return '';
+            url= '';
+            break;
     }
+    return url;
 };

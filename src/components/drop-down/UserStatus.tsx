@@ -32,7 +32,7 @@ export type UserStatusProps = {
 
 const UserStatus = ({ listStaff, setUserStatus }: UserStatusProps) => {
     return (
-        <Dropdown className={`m-0 p-0 mt-4 mt-md-0 userStatusDrop d-flex flex-fill justify-content-between justify-content-md-end w-auto`}>
+        <Dropdown className={`m-0 p-0 pt-4 pt-md-0 userStatusDrop d-flex flex-fill justify-content-between justify-content-md-end w-auto`}>
             {
                 listStaff !== 'Teams' &&
                 <>

@@ -7,6 +7,7 @@ import { createProducts } from '../../utils/API/AxiosCall';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import LoginButton from '../../components/button/LoginButton';
+import { validUser } from '../../components/sweet-fires/SweetFires';
 
 export type FormInput = {
     name: string;
@@ -38,6 +39,7 @@ const LoginForm = () => {
         setTimeout(() => {
             if (response.data.data.token_details.access_token) {
                 sessionStorage.setItem('token', response.data.data.token_details.access_token);
+                validUser("Logged in...");
                 navigate('/userslist');
                 setTimeout(() => {
                     setClicked(!clicked);

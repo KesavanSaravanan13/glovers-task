@@ -55,7 +55,7 @@ const UserDataTable: React.FC<UserType> = ({ listStaff, data, currentPage, recor
         { colValue: 'col-2 ', label: 'Team Details', type: 'text', },
     ]
     const tdValueTeams: TdValueType[] = [
-        { colValue: 'snoTeam', label: 'S.No', type: 'text', },
+        { colValue: 'col-1', label: 'S.No', type: 'text', },
         { colValue: 'col-1', label: 'Team Name', type: 'text', },
         { colValue: 'col-1 ', label: 'Team Type', type: 'date', },
         { colValue: 'col-1 ', label: 'Age Group', type: 'text', },
@@ -72,7 +72,7 @@ const UserDataTable: React.FC<UserType> = ({ listStaff, data, currentPage, recor
             setTdvalue(tdValueStaff);
         }
     }, [listStaff]);
-
+    
     return (
         <Table className="m-0 p-0 userTable">
             {
