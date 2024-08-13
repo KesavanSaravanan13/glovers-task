@@ -18,8 +18,8 @@ type DataItem = {
     team_type: string;
 };
 
-const UserList = () => {
-    const [listStaff, setListStaff] = useState<string>('Coach');
+const TeamList = () => {
+    const [listStaff, setListStaff] = useState<string>('Teams');
     const [dataFromStore, setDataFromStore] = useState<DataItem[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const baseUrl = getBaseUrl(listStaff);
@@ -31,17 +31,17 @@ const UserList = () => {
             if (data) {
                 setDataFromStore(data.data || []);
             }
-        setLoading(isLoading);
-        }, 2300);
-    }, [data, isLoading, listStaff]);
+            setLoading(isLoading);
+        }, 1000);
+    }, [data, isLoading]);
 
     useEffect(() => {
         if (refetch) {
             setLoading(true);
             refetch();
             setTimeout(() => {
-                setLoading(isLoading);
-            }, 1000);
+                setLoading(false);
+            }, 1500);
         }
     }, [refetch]);
 
@@ -56,4 +56,4 @@ const UserList = () => {
     );
 };
 
-export default UserList;
+export default TeamList;

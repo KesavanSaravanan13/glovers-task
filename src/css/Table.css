@@ -2,7 +2,9 @@
 .userTable th{
     background-color: #f7f9fa;
 }
-
+.userTable{
+    overflow: auto !important;
+}
 .iconBtn{
     border: none;
     outline: none;
@@ -44,3 +46,8 @@
 td{
     font-size: 14px !important;
 }
+
+.snoTeam td{
+    padding: 10.5px 14px !important;
+}
+

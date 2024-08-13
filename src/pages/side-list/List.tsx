@@ -2,17 +2,21 @@ import { Col, Row } from "react-bootstrap";
 import SideBar from "../../components/side-bar/SideBar";
 import { useParams } from "react-router-dom";
 import UserList from "../user-list/UserList";
+import TeamList from "../user-list/TeamList";
+import { useEffect, useState } from "react";
 
 const List = () => {
 
     const { list } = useParams();
+
+    const [viewportWidth, setViewportWidth] = useState<number>(0);
     let component;
     switch (list) {
         case 'userslist':
-            component = (<UserList/>)
+            component = (<UserList />)
             break;
         case 'teamslist':
-            component = (<Col className="m-0 p-0 col-9 flex-fill">teamslist</Col>)
+            component = (<TeamList />)
             break;
         case 'dashboard':
             component = (<Col className="m-0 p-0 col-9 flex-fill fs-3 fw-semibold d-flex align-items-center justify-content-center">dashboard's yet to develop</Col>)
@@ -34,7 +38,7 @@ const List = () => {
 
     return (
         <Row className="m-0 p-0 vh-100 d-flex justify-content-center flex-wrap">
-            <SideBar message={list} />
+             <SideBar message={list} /> 
             {component}
         </Row>
     );

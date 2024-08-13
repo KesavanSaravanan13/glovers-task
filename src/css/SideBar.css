@@ -1,7 +1,7 @@
 
 .sideBar{
     border-right: 0.5px solid rgb(214, 214, 214);
-    width: 275px;
+    width: 15%;
 }
 .sideList{
     border-radius: 5px;
@@ -12,4 +12,11 @@
 
 .activeSideBar{
     background-image: linear-gradient(to bottom,#f0f7ff,#e6e7fa);
+}
+
+@media screen and (max-width:1200px){
+    .sideBar{
+        border-right: 0.5px solid rgb(214, 214, 214);
+        width: 20%;
+    }
 }

@@ -21,11 +21,11 @@
 }
 
 .activeBtn {
-    border-bottom: 3px solid #205cab;
+    border-bottom: 3px solid #205cab !important;
 }
 
 .searchBar {
-    width: 350px;
+    width: 75%;
     background-color: #f7f9fa;
     border: 0.2px solid rgb(214, 214, 214);
     border-radius: 20px;
@@ -63,7 +63,8 @@
 }
 
 button.dropdown-toggle{
-    margin: 0;
+    margin: 0px  !important;
+    margin-right: 5px !important;
 }
 
 .exReport , .exReport:hover{
@@ -83,3 +84,5 @@ button.dropdown-toggle{
     background-color: #f2f0f0 !important;
     color: black !important;
 }
+
+

@@ -9,8 +9,8 @@ export type UpperBarProps = {
 }
 const SearchBar:React.FC<UpperBarProps> = ({handleKeyDown,handleChange}) => {
     return (
-        <form className='m-0 p-0 w-auto'>
-            <Row className='m-0 p-0 px-3 d-flex flex-nowrap justify-content-between align-items-center searchBar'>
+        <form className='m-0 p-0 w-auto d-flex flex-fill'>
+            <Row className='m-0 p-0 px-3 me-0 me-md-3 flex-fill d-flex flex-nowrap justify-content-between align-items-center searchBar'>
                 <Col className='m-0 p-0'>
                     <button className='col-1 m-0 p-0 pb-1'>
                         <img src={search} className=" m-0 p-0" width="18px" height="15px" alt="" />

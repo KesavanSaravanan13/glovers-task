@@ -6,7 +6,7 @@ ul li{
     padding: 10px !important;
 }
 
-.active{
+.active a{
     background-color: #005eab !important;
 }
 .prev{

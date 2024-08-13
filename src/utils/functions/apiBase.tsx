@@ -1,4 +1,3 @@
-// utils/functions/apiBase.ts
 export const getBaseUrl = (message: string): string => {
     switch (message) {
         case 'Staff':
@@ -7,7 +6,11 @@ export const getBaseUrl = (message: string): string => {
             return 'https://dev-api.gloversscorebooks.com/v1/user/admin/players-list';
         case 'Fans':
             return 'https://dev-api.gloversscorebooks.com/v1/user/admin/fans-list';
-        default:
+        case 'Teams':
+            return 'https://dev-api.gloversscorebooks.com///v1/user/admin/teams-list';
+        case 'Coach':
             return 'https://dev-api.gloversscorebooks.com/v1/user/admin/coach-list';
+        default:
+            return '';
     }
 };

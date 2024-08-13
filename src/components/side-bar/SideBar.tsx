@@ -11,7 +11,7 @@ interface ListSideBar {
 const SideBar: React.FC<ListSideBar> = ({ message }) => {
 
     return (
-        <Col className="m-0 p-0 col-2 sideBar">
+        <Col className="m-0 p-0 col-2 sideBar d-none d-lg-block">
             <Row className="m-0 p-0 pt-5">
                 <Col className='m-0 p-0 text-center'>
                     <img className='m-0 p-0 logoImg' src={Logo} alt={'Logo'} />

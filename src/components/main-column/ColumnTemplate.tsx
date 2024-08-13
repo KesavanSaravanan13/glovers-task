@@ -16,6 +16,11 @@ type DataItem = {
     status: boolean;
     is_subscribe: boolean;
     customeid: string;
+    team_name: string;
+    address: string;
+    age_value: string;
+    season_name: string;
+    team_type: string;
 };
 
 type ColumnTempType = {
@@ -77,19 +82,36 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
     }, [userStatus, dataFromStore]);
 
     useEffect(() => {
-        if (Array.isArray(dataAfterUserStatus)) {
-            const sortedData = buttonvalue === 'Up'
-                ? [...dataAfterUserStatus].sort((a, b) =>
-                    a.first_name.localeCompare(b.first_name)
-                )
-                : [...dataAfterUserStatus].sort((a, b) =>
-                    b.first_name.localeCompare(a.first_name)
-                );
-            setDataAfterSort(sortedData);
+        if (listStaff === 'Teams') {
+            if (Array.isArray(dataAfterUserStatus)) {
+                const sortedData = (buttonvalue === 'Up'
+                    ? [...dataAfterUserStatus].sort((a, b) =>
+                        (a.team_name || '').localeCompare(b.team_name || '')
+                    )
+                    : [...dataAfterUserStatus].sort((a, b) =>
+                        (b.team_name || '').localeCompare(a.team_name || '')
+                    ));
+                setDataAfterSort(sortedData);
+            } else {
+                console.error('dataAfterUserStatus is not an array:', dataAfterUserStatus);
+            }
         } else {
-            console.error('dataAfterUserStatus is not an array:', dataAfterUserStatus);
+            if (Array.isArray(dataAfterUserStatus)) {
+                const sortedData = (buttonvalue === 'Up'
+                    ? [...dataAfterUserStatus].sort((a, b) =>
+                        (a.first_name || '').localeCompare(b.first_name || '')
+                    )
+                    : [...dataAfterUserStatus].sort((a, b) =>
+                        (b.first_name || '').localeCompare(a.first_name || '')
+                    ));
+                setDataAfterSort(sortedData);
+            } else {
+                console.error('dataAfterUserStatus is not an array:', dataAfterUserStatus);
+            }
         }
     }, [buttonvalue, dataAfterUserStatus]);
+
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             searchFilter(e.currentTarget.value);
@@ -130,11 +152,11 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
             </Row>
             <Row className="m-0 p-0 pe-4">
                 <Col className="m-0 p-0 ms-3 box">
-                    <UpperBar setListStaff={setListStaff} setUserStatus={setUserStatus} handleKeyDown={handleKeyDown} handleChange={handleChange} />
-                    <Row className="m-0 p-0 mx-4">
-                        <hr className="m-0 p-0" />
+                    <UpperBar listStaff={listStaff} setListStaff={setListStaff} setUserStatus={setUserStatus} handleKeyDown={handleKeyDown} handleChange={handleChange} />
+                    <Row className="m-0 p-0 mx-2 px-2">
+                        <hr className="m-0 p-0 px-2" />
                     </Row>
-                    <Row className="m-0 p-4">
+                    <Row className="m-0 p-4 px-3 overflow-auto">
                         <UserDataTable
                             listStaff={listStaff}
                             data={currentRecords}
@@ -145,7 +167,7 @@ const ColumnTemplate = ({ listStaff, dataFromStore, loading, setLoading, setList
                             loading={loading}
                         />
                     </Row>
-                    <Row className="m-0 p-4">
+                    <Row className="m-0 p-4 px-3">
                         <Col className='m-0 p-0 col-2 d-flex align-items-center flex-fill w-auto'>
                             <Row className='m-0 p-0 d-flex justify-content-between gap-3'>
                                 <Col className='m-0 p-0 col-6 d-flex align-items-center w-auto'>
