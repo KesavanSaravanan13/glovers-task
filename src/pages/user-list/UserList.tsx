@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import ColumnTemplate from '../../components/main-column/ColumnTemplate';
 import { useGetDataQuery } from '../../Redux/apiSlice';
 import { getBaseUrl } from '../../utils/functions/apiBase';
-import { validUser } from '../../components/sweet-fires/SweetFires';
 
 export type DataItem = {
     first_name: string;
@@ -24,16 +23,16 @@ const UserList = () => {
     const [dataFromStore, setDataFromStore] = useState<DataItem[]>([]);
     const baseUrl = getBaseUrl(listStaff);
     const { data, isLoading, refetch } = useGetDataQuery(baseUrl);
-    const [loading, setLoading] = useState<boolean>(isLoading);
-    console.log(isLoading);
+    const [loading, setLoading] = useState<boolean>(false);
     useEffect(() => {
         console.log(loading);
         setDataFromStore([]);
         if (data) {
             setDataFromStore(data.data || []);
+            setLoading(isLoading);
+
         }
-        setLoading(isLoading);
-    }, [data, isLoading]);
+    }, [data]);
 
     useEffect(() => {
         if (refetch) {
@@ -41,9 +40,9 @@ const UserList = () => {
             refetch();
             setTimeout(() => {
                 setLoading(isLoading);
-            }, 1000);
+            }, 1500);
         }
-    }, [refetch, listStaff]);
+    }, [refetch, listStaff,isLoading]);
 
     return (
         <ColumnTemplate

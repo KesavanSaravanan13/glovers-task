@@ -8,7 +8,6 @@ import UserDataTable from "../../pages/table/UserDataTable";
 import { useEffect, useRef, useState } from "react";
 import Pagination from '../pagination/Pagination';
 
-
 export type DataItem = {
     first_name: string;
     last_name: string;
@@ -32,12 +31,9 @@ type ColumnTempType = {
     setDataFromStore:(value:DataItem[])=>void;
 }
 
-
 const ColumnTemplate = ({ listStaff, dataFromStore,setDataFromStore, loading, setLoading, setListStaff }: ColumnTempType) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [recordsPerPage, setRecordsPerPage] = useState<number>(10);
-
-
     const [buttonvalue, setButtonValue] = useState<string>('Up');
     const [dataAfterUserStatus, setDataAfterUserStatus] = useState<DataItem[]>([]);
     const [dataAfterSort, setDataAfterSort] = useState<DataItem[]>([]);
@@ -53,7 +49,6 @@ const ColumnTemplate = ({ listStaff, dataFromStore,setDataFromStore, loading, se
                 const filteredData = duplicateData.filter((values) =>
                     values.first_name.toLowerCase().includes(newVal.toLowerCase())
                 );
-                console.log("Filter : ", filteredData);
                 setData(filteredData);
             } else {
                 setData(duplicateData);
